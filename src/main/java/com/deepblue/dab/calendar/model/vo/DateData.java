@@ -1,12 +1,14 @@
 package com.deepblue.dab.calendar.model.vo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DateData {
+public class DateData{
+	
 	String year = "";
 	String month = "";
 	String date = "";

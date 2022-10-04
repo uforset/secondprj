@@ -40,4 +40,11 @@ public class MemberDao {
 	public int deleteMember(String userid) {
 		return session.delete("memberMapper.deleteMember", userid);
 	}
+	public ArrayList<Member> selectList(){
+		List<Member> list = session.selectList("memberMapper.selectList");
+		return (ArrayList<Member>)list;
+	}
+	public int updateLoginOK(Member member) {
+		return session.update("memberMapper.updateLoginOK", member);
+	}
 }

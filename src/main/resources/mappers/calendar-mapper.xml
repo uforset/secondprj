@@ -11,6 +11,9 @@
 		<result column="bill_price" property="bill_price" />
 		<result column="bill_content" property="bill_content" />
 		<result column="bill_category" property="bill_category" />
+		<result column="bill_cardinfo" property="bill_cardinfo" />
+		<result column="bill_storeinfo_name" property="bill_storeinfo_name" />
+		<result column="bill_storeinfo_biznum" property="bill_storeinfo_biznum" />
 	</resultMap>
 	
 	<select id="selectBillTime" parameterType="Bill" resultMap="resultBill">

@@ -1,32 +1,37 @@
 package com.deepblue.dab.calendar.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.deepblue.dab.calendar.model.vo.*;
+import com.deepblue.dab.bill.model.service.BillService;
+import com.deepblue.dab.bill.model.vo.Bill;
+import com.deepblue.dab.calendar.model.service.CalendarService;
+import com.deepblue.dab.calendar.model.vo.DateData;
 
 @Controller
 public class CalendarController {
 	private static final Logger logger = LoggerFactory.getLogger(CalendarController.class);
 
-	//@Autowired // 자동 의존성주임(DI) (자동 객체 생성됨)
-	//private CalendarService calendarService;
+	@Autowired // 자동 의존성주임(DI) (자동 객체 생성됨)
+	private BillService billService;
+	
+	// @Autowired
+	// private CalendarService calendarService;
 	
 	@RequestMapping(value="calendarListView.do", method = RequestMethod.GET)
 	public String calendar(Model model, HttpServletRequest request, DateData dateData){
@@ -76,4 +81,27 @@ public class CalendarController {
 		model.addAttribute("today_info", today_info);
 		return "calendar/calendarListView";
 	}
+	
+	/*
+	 * @RequestMapping(value="calendarDetailView.do", method = RequestMethod.GET)
+	 * public String calendarDetailMethod(
+	 * 
+	 * @RequestParam("bill_timestamp") Timestamp bill_timestamp, Model model,
+	 * HttpSession session) {
+	 * 
+	 * Bill bill = billService.selectBill(bill_timestamp);
+	 * 
+	 * if(bill != null) { model.addAttribute("bill", bill);
+	 * 
+	 * return "calendar/calendarDetailView";
+	 * 
+	 * } else { model.addAttribute("message", bill_timestamp + " 일정 지출 내역 상세보기 실패");
+	 * return "common/error"; } }
+	 */
+   
+   @RequestMapping("cdetail.do")
+	public String moveWritePage() {
+		return "calendar/calendarDetailView";
+	}
+	 
 }

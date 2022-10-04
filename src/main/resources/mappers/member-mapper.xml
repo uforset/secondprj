@@ -62,7 +62,7 @@
 		set loginok = #{ loginok }
 		where userid = #{ userid }
 	</update>
-	
+
 	<insert id="insertMember" parameterType="Member">
 		insert into member (userid, userpwd, username, email, loginok, admin, enroll_date)
 		values (#{ userid }, #{ userpwd }, #{ username }, #{ email }, default, default, default)

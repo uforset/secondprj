@@ -1,19 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
-<%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html lang="ko">
 <head>
 	<title>캘린더</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-	<script type="text/javaScript" src="./modal.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./modal.css">
 
 	<style TYPE="text/css">
 		body {
@@ -180,8 +176,10 @@
 		}
 		
 	</style>
+
 </head>
 <body>
+<c:import url="/WEB-INF/views/common/menubar.jsp" />
 
 <form name="calendarFrm" id="calendarFrm" action="" method="GET">
 
@@ -215,6 +213,8 @@
 <div class="today_button_div">
 <button type="button" class="buttonstyle" onclick="location.href='calendarListView.do'" style="height: 30ps; width:80px;">Today</button>
 </div>
+
+<button type="button" class="buttonstyle" onclick="location.href='cdetail.do'" style="height: 30ps; width:80px;">지출 내역 보기</button>
 
 <table class="calendar_body">
 
@@ -251,10 +251,6 @@
 					<td class="today">
 						<div class="date">
 							${dateList.date}
-							<div class="modal-dialog">
-							<jsp:include page="./modal.jsp"></jsp:include>
-							<button id="createBtn" type="button" data-toggle="modal" data-target="#myModal">영수증 내역</button>
-							</div>
 						</div>
 						<div>
 						</div>
@@ -264,10 +260,6 @@
 					<td class="sat_day">
 						<div class="sat">
 							${dateList.date}
-							<div class="modal-dialog">
-							<jsp:include page="./modal.jsp"></jsp:include>
-							<button id="createBtn" type="button" data-toggle="modal" data-target="#myModal">영수증 내역</button>
-							</div>
 						</div>
 						<div>
 						</div>
@@ -280,10 +272,6 @@
 			<a href></a>
 			<div class="sun">
 				${dateList.date}
-				<div class="modal-dialog">
-				<jsp:include page="./modal.jsp"></jsp:include>
-				<button id="createBtn" type="button" data-toggle="modal" data-target="#myModal">영수증 내역</button>
-				</div>
 			</div>
 			<div>
 			</div>
@@ -293,10 +281,6 @@
 		<td class="normal_day">
 			<div class="date">
 				${dateList.date}
-				<div class="modal-dialog">
-				<jsp:include page="./modal.jsp"></jsp:include>
-				<button id="createBtn" type="button" data-toggle="modal" data-target="#myModal">영수증 내역</button>
-				</div>
 			</div>
 			<div>
 			
@@ -311,6 +295,6 @@
 </div>
 </form>
 
-	<c:import url="/WEB-INF/views/common/footer.jsp" />
+<%-- <c:import url="/WEB-INF/views/common/footer.jsp" /> --%>
 </body>
 </html>

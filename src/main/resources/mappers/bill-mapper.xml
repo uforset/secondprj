@@ -25,4 +25,6 @@
 				#{bill_storeinfo_name},
 				#{bill_storeinfo_biznum})
 	</insert>
+	
+	
 </mapper>

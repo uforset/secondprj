@@ -1,5 +1,7 @@
 package com.deepblue.dab.member.model.service;
 
+import java.util.ArrayList;
+
 import com.deepblue.dab.member.model.vo.Member;
 
 public interface MemberService {
@@ -11,4 +13,6 @@ public interface MemberService {
 	Member selectByMail(String email);
 	int updateMember(Member member);
 	int deleteMember(String userid);
+	ArrayList<Member> selectList();
+	int updateLoginOK(Member member);
 }

@@ -31,19 +31,25 @@
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="${ pageContext.servletContext.contextPath }/main.do" class="logo">
               <span style="font-size :30px">DeepAccountBook</span>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section" style=" font-family: 'Noto Sans KR', sans-serif"><a href="#services">Q&A게시판</a></li>
+              <li class="scroll-to-section"><a href="${ pageContext.servletContext.contextPath }/main.do" class="active">Home</a></li>
+              <li class="scroll-to-section" style=" font-family: 'Noto Sans KR', sans-serif"><a href="${ pageContext.servletContext.contextPath }/qnaListView.do">Q&A게시판</a></li>
               <li class="scroll-to-section" style=" font-family: 'Noto Sans KR', sans-serif;"><a href="${ pageContext.servletContext.contextPath }/calendarListView.do">가계부</a></li>
               <c:if test="${ empty sessionScope.loginMember }">
 	              <li><div class="gradient-button" ><a href="${ pageContext.servletContext.contextPath }/enrollPage.do"> 회원가입</a></div></li> 
 	              <li><div class="gradient-button" ><a href="${ pageContext.servletContext.contextPath }/loginPage.do"> 로그인</a></div></li>
               </c:if>
+              
+            <!-- 로그인 한 경우 : 관리자인 경우 -->
+			<c:if test="${ !empty sessionScope.loginMember and sessionScope.loginMember.admin eq 'Y' }">
+				<li><a href="${ pageContext.servletContext.contextPath }/mlist.do">회원관리</a></li>
+			</c:if>
+              
               <c:if test="${ !empty sessionScope.loginMember and loginMember.admin ne 'Y' }">
 	              <li><a href="${ pageContext.servletContext.contextPath }/bill.do">지출등록Test</a></li>
 	              <li>
